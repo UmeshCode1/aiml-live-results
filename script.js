@@ -25,4 +25,25 @@ document.addEventListener('DOMContentLoaded', () => {
             panel.style.setProperty('--mouse-y', `${y}px`);
         });
     });
+    // Handle iframe refresh to pull latest Google Docs changes
+    const refreshBtn = document.getElementById('refresh-btn');
+    const docsIframe = document.getElementById('docs-iframe');
+    
+    if (refreshBtn && docsIframe) {
+        refreshBtn.addEventListener('click', () => {
+            const icon = refreshBtn.querySelector('i');
+            icon.classList.add('fa-spin');
+            
+            // Append a random timestamp to bypass browser caching
+            const currentSrc = docsIframe.src;
+            const url = new URL(currentSrc);
+            url.searchParams.set('t', Date.now());
+            docsIframe.src = url.href;
+            
+            // Remove spin after 1.5 seconds or when loaded
+            setTimeout(() => {
+                icon.classList.remove('fa-spin');
+            }, 1500);
+        });
+    }
 });

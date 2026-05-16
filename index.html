@@ -12,7 +12,7 @@
 <body>
     <div id="loading-screen" class="loading-screen">
         <div class="loader">
-            <div class="glow-orb"></div>
+            <div class="cyber-circle"></div>
             <div class="loader-text">INITIALIZING NEURAL NET...</div>
         </div>
     </div>
@@ -37,15 +37,15 @@
                 </div>
             </div>
             <h1 class="title">LIVE <span class="highlight">UPDATES</span></h1>
-            <div class="status">
-                <span class="pulse"></span>
-                <span class="status-text">SYSTEM ONLINE</span>
-            </div>
+            <button id="refresh-btn" class="status btn-refresh" title="Refresh Live Data">
+                <i class="fas fa-sync-alt spin-icon"></i>
+                <span class="status-text">REFRESH</span>
+            </button>
         </header>
 
         <section class="document-container glass-panel">
             <div class="iframe-wrapper">
-                <iframe 
+                <iframe id="docs-iframe"
                     src="https://docs.google.com/document/d/e/2PACX-1vTNv1JQSN-hUP1yvWyPTW5PPYHCYdRrOb6ZTjXRUQIUXGAiZVQRphPblG6BFBSIQP_YdStj1466aeQs/pub?embedded=true"
                     frameborder="0"
                     allowfullscreen>
