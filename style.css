@@ -342,10 +342,13 @@ body {
 
 .title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 900;
     letter-spacing: 4px;
-    text-shadow: 0 0 20px rgba(255,255,255,0.2);
+    background: linear-gradient(180deg, #FFFFFF 0%, #A0A5C0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));
     margin-bottom: 5px;
 }
 
@@ -459,7 +462,8 @@ body {
     animation: marquee 25s linear infinite;
     font-family: 'Orbitron', sans-serif;
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: #E2E8F0;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
 .ticker-text span {
@@ -523,9 +527,18 @@ body {
     flex-direction: column;
     gap: 5px;
     padding: 15px;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.4);
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(0, 240, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    background: rgba(0, 240, 255, 0.05);
+    border-top: 1px solid var(--brand-secondary);
+    box-shadow: 0 5px 20px rgba(0, 240, 255, 0.15);
+    transform: translateY(-2px);
 }
 
 .stat-value {
@@ -553,9 +566,10 @@ body {
 
 .action-btn {
     width: 100%;
-    padding: 12px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 15px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid var(--brand-primary);
     color: #fff;
     border-radius: 6px;
     cursor: pointer;
@@ -563,15 +577,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .action-btn:hover, .action-btn.active {
     background: rgba(0,240,255,0.1);
-    border-color: var(--brand-secondary);
+    border-color: rgba(0,240,255,0.3);
+    border-left: 3px solid var(--brand-secondary);
     color: var(--brand-secondary);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+    transform: translateX(5px);
 }
 
 /* Main Docs Panel */
@@ -699,10 +716,9 @@ body {
     width: 100%;
     height: 100%;
     border: none;
-    /* MAGIC CSS TO MAKE DOCS LOOK CYBERPUNK */
-    filter: invert(1) hue-rotate(180deg) contrast(1.1) brightness(0.9);
-    opacity: 0.95;
-    mix-blend-mode: lighten;
+    /* MAGIC CSS TO MAKE DOCS LOOK CYBERPUNK AND HIGH CONTRAST */
+    filter: invert(1) hue-rotate(180deg) grayscale(1) brightness(1.3) contrast(1.5);
+    opacity: 0.98;
 }
 
 /* =========================================
@@ -742,17 +758,17 @@ body {
 }
 
 .social-icon {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 10px;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
     color: var(--text-main);
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     transition: all 0.3s ease;
 }
 
