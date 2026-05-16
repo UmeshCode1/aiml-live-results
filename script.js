@@ -75,8 +75,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => flashEl.style.opacity = '0', 150);
             }
             
-            // Show loading skeleton again
-            if (skeleton) skeleton.style.display = 'flex';
+            // Show loading skeleton again (with terminal effect reset)
+            if (skeleton) {
+                skeleton.style.display = 'flex';
+                // Reset terminal lines animation
+                const lines = skeleton.querySelectorAll('.t-line');
+                lines.forEach(line => {
+                    line.style.animation = 'none';
+                    line.offsetHeight; /* trigger reflow */
+                    line.style.animation = null; 
+                });
+            }
             
             // Append random timestamp to bypass browser caching
             const url = new URL(docsIframe.src);
@@ -105,6 +114,39 @@ document.addEventListener('DOMContentLoaded', () => {
             particle.style.animationDelay = (Math.random() * 5) + 's';
             particlesContainer.appendChild(particle);
         }
+    }
+
+    // 7. Dynamic Mini Graph Canvas
+    const canvas = document.getElementById('miniGraph');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        const points = Array(20).fill(10);
+        setInterval(() => {
+            points.shift();
+            points.push(Math.random() * 15 + 2);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height);
+            for(let i=0; i<points.length; i++) {
+                ctx.lineTo(i * 5, canvas.height - points[i]);
+            }
+            ctx.lineTo(100, canvas.height);
+            ctx.fillStyle = 'rgba(0, 240, 255, 0.2)';
+            ctx.fill();
+            ctx.strokeStyle = '#00F0FF';
+            ctx.stroke();
+        }, 500);
+    }
+
+    // 8. System Load Randomizer
+    const loadText = document.querySelector('.load-text');
+    const loadFill = document.querySelector('.load-fill');
+    if (loadText && loadFill) {
+        setInterval(() => {
+            const load = Math.floor(Math.random() * 40) + 20; // 20% to 60%
+            loadText.innerText = load + '%';
+            loadFill.style.width = load + '%';
+        }, 2500);
     }
 });
 

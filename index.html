@@ -62,6 +62,7 @@
             </div>
             
             <div class="center-title">
+                <div class="scan-beam"></div>
                 <h1 class="title">LIVE UPDATE <span class="highlight">PORTAL</span></h1>
                 <div class="subtitle">NATIONAL EVENT COMMAND CENTER</div>
             </div>
@@ -107,20 +108,40 @@
                     </div>
                     <div class="stats-grid">
                         <div class="stat-item">
+                            <div class="stat-header">
+                                <i class="fas fa-users"></i>
+                                <div class="stat-label">ACTIVE CONNECTIONS</div>
+                            </div>
                             <div class="stat-value text-glow" id="viewers-count">1,204</div>
-                            <div class="stat-label">ACTIVE CONNECTIONS</div>
+                            <canvas id="miniGraph" width="100" height="20"></canvas>
                         </div>
-                        <div class="stat-item">
+                        <div class="stat-item active-glow">
+                            <div class="stat-header">
+                                <i class="fas fa-satellite-dish pulse-icon"></i>
+                                <div class="stat-label">MAINFRAME STATUS</div>
+                            </div>
                             <div class="stat-value text-cyan">ONLINE</div>
-                            <div class="stat-label">MAINFRAME STATUS</div>
+                            <div class="signal-bars">
+                                <div class="s-bar active"></div><div class="s-bar active"></div><div class="s-bar active"></div><div class="s-bar blink-bar"></div>
+                            </div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-value text-glow">PHASE 2</div>
-                            <div class="stat-label">CURRENT ROUND</div>
+                            <div class="stat-header">
+                                <i class="fas fa-microchip"></i>
+                                <div class="stat-label">SYSTEM LOAD</div>
+                            </div>
+                            <div class="stat-value text-glow load-text">42%</div>
+                            <div class="load-graph">
+                                <div class="load-fill"></div>
+                            </div>
                         </div>
                         <div class="stat-item">
+                            <div class="stat-header">
+                                <i class="fas fa-history"></i>
+                                <div class="stat-label">LAST DATA SYNC</div>
+                            </div>
                             <div class="stat-value text-pink" id="time-since-update">00:00 AGO</div>
-                            <div class="stat-label">LAST DATA SYNC</div>
+                            <div class="sync-pulse"></div>
                         </div>
                     </div>
                 </div>
@@ -156,10 +177,26 @@
                     <div class="corner corner-bl"></div>
                     <div class="corner corner-br"></div>
                     
-                    <!-- Preloader for iframe -->
-                    <div class="iframe-skeleton" id="iframe-skeleton">
-                        <div class="cyber-spinner"></div>
-                        <p class="skeleton-text">DECRYPTING DATA STREAM...</p>
+                    <!-- Cinematic Terminal Preloader for iframe -->
+                    <div class="iframe-skeleton terminal-placeholder" id="iframe-skeleton">
+                        <div class="terminal-overlay"></div>
+                        <div class="terminal-content">
+                            <div class="terminal-header">
+                                <span class="blink">🔴</span> LIVE EVENT STREAM ACTIVE
+                            </div>
+                            <div class="terminal-body" id="terminal-lines">
+                                <div class="t-line">Awaiting incoming transmissions...</div>
+                                <div class="t-line delay-1">Monitoring event control systems...</div>
+                                <div class="t-line delay-2">Telemetry channels stable...</div>
+                                <div class="t-line delay-3">AI synchronization online...</div>
+                            </div>
+                            <div class="terminal-footer">
+                                <span class="t-cursor">_</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="iframe-wrapper">
