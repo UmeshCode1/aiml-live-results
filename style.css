@@ -222,6 +222,12 @@ body {
   will-change: transform;
 }
 
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 @keyframes float-el {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-6px); }
