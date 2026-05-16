@@ -355,6 +355,73 @@ body {
     letter-spacing: 1px;
 }
 
+
+.status-bar {
+    background: rgba(15, 15, 25, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.status-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #00FF66;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00FF66;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00FF66;
+    animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-green {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.experience-tag {
+    color: #FF0055;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+}
+
+.status-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.status-right i {
+    color: var(--brand-secondary);
+}
+
 /* Document Container */
 @keyframes float-panel {
     0%, 100% { transform: translateY(0); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
@@ -517,6 +584,23 @@ body {
     .app-container {
         padding: 0.8rem;
         gap: 1rem;
+    }
+
+    .status-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0.8rem;
+        text-align: center;
+    }
+
+    .status-left {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .status-right {
+        justify-content: center;
     }
 
     .glass-header {

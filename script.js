@@ -37,6 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
             panel.style.setProperty('--mouse-y', `${y}px`);
         });
     });
+    // Live Time Clock
+    const timeElement = document.getElementById('current-time');
+    if (timeElement) {
+        setInterval(() => {
+            const now = new Date();
+            timeElement.textContent = now.toLocaleTimeString();
+        }, 1000);
+    }
+
     // Handle iframe refresh to pull latest Google Docs changes
     const refreshBtn = document.getElementById('refresh-btn');
     const docsIframe = document.getElementById('docs-iframe');
