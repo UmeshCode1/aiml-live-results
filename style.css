@@ -183,6 +183,12 @@ body {
     gap: 12px;
 }
 
+.logos-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .club-logo {
     width: 48px;
     height: 48px;
@@ -191,6 +197,11 @@ body {
     box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
     border: 2px solid rgba(138, 43, 226, 0.8);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.club-logo.oct-logo {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .club-logo:hover {
@@ -308,6 +319,52 @@ body {
     width: 100%;
     height: 100%;
     border: none;
+}
+/* Footer & Social Links */
+.glass-footer {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    box-shadow: var(--glass-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideDown 1s ease-out 0.8s forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    font-size: 1.2rem;
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    background: rgba(138, 43, 226, 0.2);
+    color: var(--brand-secondary);
+    border-color: var(--brand-secondary);
+    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.4);
 }
 
 /* Responsive Design */
