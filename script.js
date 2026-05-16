@@ -1,128 +1,144 @@
+/* =============================================
+   AI & ML Club OCT — Live Updates Portal
+   script.js — Lean, performant, clean
+   ============================================= */
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Simulate neural net initialization (loading screen)
-    const loadingScreen = document.getElementById('loading-screen');
-    
-    const progressBar = document.querySelector('.progress-bar');
-    const percentageText = document.querySelector('.percentage');
-    
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += Math.random() * 15;
-        if (progress >= 100) {
-            progress = 100;
-            clearInterval(interval);
-            
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 800);
-            }, 500);
-        }
-        
-        progressBar.style.width = `${progress}%`;
-        percentageText.textContent = `${Math.floor(progress)}%`;
-    }, 150);
 
-    // Optional: Add some interactive hover effects to the glass panels
-    const panels = document.querySelectorAll('.glass-panel, .glass-header, .glass-footer');
-    
-    panels.forEach(panel => {
-        panel.addEventListener('mousemove', (e) => {
-            const rect = panel.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            panel.style.setProperty('--mouse-x', `${x}px`);
-            panel.style.setProperty('--mouse-y', `${y}px`);
-        });
+  /* ── 1. LOADING SCREEN ── */
+  const loadingScreen = document.getElementById('loading-screen');
+  const progressBar   = document.querySelector('.progress-bar');
+  const percentageEl  = document.querySelector('.percentage');
+
+  let progress = 0;
+  const loadInterval = setInterval(() => {
+    progress += Math.random() * 18;
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(loadInterval);
+      setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+        setTimeout(() => { loadingScreen.style.display = 'none'; }, 750);
+        // Start typewriter after loader completes
+        typeWriter();
+      }, 400);
+    }
+    progressBar.style.width = `${Math.min(progress, 100)}%`;
+    percentageEl.textContent = `${Math.floor(Math.min(progress, 100))}%`;
+  }, 120);
+
+
+  /* ── 2. LIVE CLOCK ── */
+  const timeEl = document.getElementById('current-time');
+  function updateClock() {
+    if (timeEl) timeEl.textContent = new Date().toLocaleTimeString();
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+
+  /* ── 3. TYPEWRITER EFFECT ── */
+  const typingEl = document.getElementById('typing-text');
+  const typePhrase = 'Receiving live updates from control center...';
+
+  function typeWriter() {
+    if (!typingEl) return;
+    typingEl.textContent = '';
+    let i = 0;
+    const type = () => {
+      if (i < typePhrase.length) {
+        typingEl.textContent += typePhrase.charAt(i++);
+        setTimeout(type, 48);
+      } else {
+        // Remove caret after pause
+        setTimeout(() => {
+          typingEl.style.borderRight = 'none';
+        }, 1500);
+      }
+    };
+    type();
+  }
+
+
+  /* ── 4. IFRAME SKELETON + LOAD ── */
+  const docsIframe = document.getElementById('docs-iframe');
+  const skeleton   = document.getElementById('skeleton-loader');
+
+  if (docsIframe && skeleton) {
+    docsIframe.addEventListener('load', () => {
+      // Fade skeleton out
+      skeleton.style.opacity = '0';
+      skeleton.style.transition = 'opacity 0.5s ease';
+      // Fade iframe in
+      docsIframe.classList.add('loaded');
+      setTimeout(() => { skeleton.style.display = 'none'; }, 500);
     });
-    // Live Time Clock
-    const timeElement = document.getElementById('current-time');
-    if (timeElement) {
-        setInterval(() => {
-            const now = new Date();
-            timeElement.textContent = now.toLocaleTimeString();
-        }, 1000);
-    }
+  }
 
-    // Typewriter effect for panel subtitle
-    const typingTextElement = document.querySelector('.typing-text');
-    if (typingTextElement) {
-        const text = "Receiving live updates from control center...";
-        let i = 0;
-        typingTextElement.textContent = ''; // Clear initial text
-        
-        function typeWriter() {
-            if (i < text.length) {
-                typingTextElement.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            } else {
-                // Remove cursor after typing
-                setTimeout(() => {
-                    typingTextElement.style.borderRight = 'none';
-                }, 1000);
-            }
+
+  /* ── 5. REFRESH BUTTON ── */
+  const refreshBtn = document.getElementById('refresh-btn');
+  const spinIcon   = refreshBtn ? refreshBtn.querySelector('.spin-icon') : null;
+
+  if (refreshBtn && docsIframe && skeleton) {
+    refreshBtn.addEventListener('click', () => {
+      // Spin icon
+      spinIcon && spinIcon.classList.add('fa-spin');
+      // Show skeleton again
+      docsIframe.classList.remove('loaded');
+      skeleton.style.display = 'flex';
+      skeleton.style.opacity  = '1';
+      // Reload iframe (append timestamp to bust cache)
+      const url = new URL(docsIframe.src);
+      url.searchParams.set('t', Date.now());
+      docsIframe.src = url.href;
+      // Stop spin
+      setTimeout(() => { spinIcon && spinIcon.classList.remove('fa-spin'); }, 1600);
+    });
+  }
+
+
+  /* ── 6. MOUSE SPOTLIGHT ── */
+  const glassEls = document.querySelectorAll('.glass-header, .glass-panel, .glass-footer');
+  glassEls.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mouse-x', `${e.clientX - r.left}px`);
+      el.style.setProperty('--mouse-y', `${e.clientY - r.top}px`);
+    });
+  });
+
+
+  /* ── 7. SCROLL PROGRESS BAR ── */
+  const scrollProgressEl = document.getElementById('scroll-progress');
+  let scrollTicking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollProgressEl && total > 0) {
+          scrollProgressEl.style.width = `${(scrolled / total) * 100}%`;
         }
-        
-        // Start typing after loader finishes
-        setTimeout(typeWriter, 4000);
+        scrollTicking = false;
+      });
+      scrollTicking = true;
     }
+  }, { passive: true });
 
-    // Handle iframe refresh to pull latest Google Docs changes
-    const refreshBtn = document.getElementById('refresh-btn');
-    const docsIframe = document.getElementById('docs-iframe');
-    
-    if (refreshBtn && docsIframe) {
-        refreshBtn.addEventListener('click', () => {
-            const icon = refreshBtn.querySelector('i');
-            icon.classList.add('fa-spin');
-            
-            // Append a random timestamp to bypass browser caching
-            const currentSrc = docsIframe.src;
-            const url = new URL(currentSrc);
-            url.searchParams.set('t', Date.now());
-            docsIframe.src = url.href;
-            
-            // Remove spin after 1.5 seconds or when loaded
-            setTimeout(() => {
-                icon.classList.remove('fa-spin');
-            }, 1500);
-        });
-    }
-    const skeleton = document.querySelector('.skeleton-loader');
-    if (docsIframe && skeleton) {
-        docsIframe.addEventListener('load', () => {
-            skeleton.style.opacity = '0';
-            setTimeout(() => {
-                skeleton.style.display = 'none';
-            }, 500);
-        });
-    }
-    // Scroll progress bar
+
+  /* ── 8. BACK TO TOP BUTTON ── */
+  const backToTopBtn = document.getElementById('back-to-top');
+
+  if (backToTopBtn) {
     window.addEventListener('scroll', () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        const progressElement = document.getElementById("scroll-progress");
-        if (progressElement) {
-            progressElement.style.width = scrolled + "%";
-        }
+      backToTopBtn.style.display = window.scrollY > 350 ? 'flex' : 'none';
+    }, { passive: true });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-    // Back to top button
-    const backToTopBtn = document.getElementById('back-to-top');
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.style.display = 'flex';
-            } else {
-                backToTopBtn.style.display = 'none';
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
+  }
+
 });
