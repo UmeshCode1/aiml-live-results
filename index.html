@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="scroll-progress" id="scroll-progress"></div>
     <div id="loading-screen" class="loading-screen">
         <div class="loader">
             <div class="loader-logo-wrapper">
@@ -70,8 +71,15 @@
         </div>
 
         <section class="document-container glass-panel">
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
             <div class="panel-header">
-                <div class="panel-title"><i class="fas fa-file-alt"></i> LIVE BROADCAST</div>
+                <div class="title-group">
+                    <div class="panel-title"><i class="fas fa-rss"></i> LIVE EVENT FEED</div>
+                    <div class="typing-text">Receiving live updates from control center...</div>
+                </div>
                 <div class="panel-controls">
                     <span class="control-dot"></span>
                     <span class="control-dot"></span>
@@ -79,6 +87,11 @@
                 </div>
             </div>
             <div class="iframe-wrapper">
+                <div class="skeleton-loader">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                </div>
                 <iframe id="docs-iframe"
                     src="https://docs.google.com/document/d/e/2PACX-1vTNv1JQSN-hUP1yvWyPTW5PPYHCYdRrOb6ZTjXRUQIUXGAiZVQRphPblG6BFBSIQP_YdStj1466aeQs/pub?embedded=true"
                     frameborder="0"
@@ -100,6 +113,7 @@
         </footer>
     </main>
 
+    <button id="back-to-top" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
     <script src="script.js"></script>
 </body>
 </html>

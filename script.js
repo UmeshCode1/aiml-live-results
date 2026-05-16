@@ -46,6 +46,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
+    // Typewriter effect for panel subtitle
+    const typingTextElement = document.querySelector('.typing-text');
+    if (typingTextElement) {
+        const text = "Receiving live updates from control center...";
+        let i = 0;
+        typingTextElement.textContent = ''; // Clear initial text
+        
+        function typeWriter() {
+            if (i < text.length) {
+                typingTextElement.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            } else {
+                // Remove cursor after typing
+                setTimeout(() => {
+                    typingTextElement.style.borderRight = 'none';
+                }, 1000);
+            }
+        }
+        
+        // Start typing after loader finishes
+        setTimeout(typeWriter, 4000);
+    }
+
     // Handle iframe refresh to pull latest Google Docs changes
     const refreshBtn = document.getElementById('refresh-btn');
     const docsIframe = document.getElementById('docs-iframe');
@@ -65,6 +89,40 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 icon.classList.remove('fa-spin');
             }, 1500);
+        });
+    }
+    const skeleton = document.querySelector('.skeleton-loader');
+    if (docsIframe && skeleton) {
+        docsIframe.addEventListener('load', () => {
+            skeleton.style.opacity = '0';
+            setTimeout(() => {
+                skeleton.style.display = 'none';
+            }, 500);
+        });
+    }
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressElement = document.getElementById("scroll-progress");
+        if (progressElement) {
+            progressElement.style.width = scrolled + "%";
+        }
+    });
+    // Back to top button
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'flex';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 });
