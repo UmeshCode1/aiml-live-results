@@ -622,6 +622,8 @@ body {
   .brand-text { align-items: center; }
   .club-name { font-size: 1.1rem; }
   .title { font-size: 1.5rem; }
+  .header-actions { justify-content: center; }
+
 
   .status-bar {
     flex-direction: column;
@@ -659,6 +661,8 @@ body {
   .club-logo { width: 38px; height: 38px; }
   .btn-refresh .status-text { display: none; }
   .btn-refresh { padding: 8px 12px; }
+  .title { font-size: 1.3rem; }
+
 }
 
 /* ── Projector / TV (large) ── */
