@@ -433,17 +433,18 @@ body {
 }
 
 .ticker-label {
-    background: var(--brand-secondary);
-    color: #000;
+    background: linear-gradient(90deg, var(--brand-secondary), transparent);
+    color: #fff;
+    border-left: 4px solid var(--brand-secondary);
     height: 100%;
-    padding: 0 20px;
+    padding: 0 20px 0 15px;
     display: flex;
     align-items: center;
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 0.8rem;
     gap: 8px;
-    box-shadow: 0 0 15px var(--brand-secondary);
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
     z-index: 2;
 }
 
@@ -517,16 +518,16 @@ body {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    padding: 20px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 15px;
 }
 
 .stat-item {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 15px;
+    gap: 6px;
+    padding: 12px 15px;
     background: rgba(0,0,0,0.4);
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.05);
@@ -550,7 +551,9 @@ body {
 .stat-label {
     font-size: 0.65rem;
     color: var(--text-muted);
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    text-transform: uppercase;
 }
 
 .text-cyan { color: var(--brand-secondary); text-shadow: 0 0 10px rgba(0,240,255,0.4); }
@@ -764,20 +767,20 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: var(--text-main);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.05);
+    color: var(--text-muted);
     text-decoration: none;
     font-size: 1.3rem;
     transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-    background: rgba(0,240,255,0.1);
-    border-color: var(--brand-secondary);
+    background: rgba(0,240,255,0.05);
+    border-color: rgba(0,240,255,0.3);
     color: var(--brand-secondary);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,240,255,0.3);
+    box-shadow: 0 5px 15px rgba(0,240,255,0.15);
 }
 
 .footer-line {
