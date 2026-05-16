@@ -51,15 +51,40 @@ body {
     gap: 20px;
 }
 
+.loader-logo-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+}
+
+.loader-logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    z-index: 2;
+    object-fit: cover;
+    animation: logo-pulse 2s infinite alternate;
+}
+
+@keyframes logo-pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 10px rgba(138, 43, 226, 0.5); border: 2px solid rgba(138, 43, 226, 0.5); }
+    100% { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 240, 255, 0.8); border: 2px solid rgba(0, 240, 255, 0.8); }
+}
+
 .cyber-circle {
-    width: 80px;
-    height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     border: 3px solid transparent;
     border-top-color: var(--brand-secondary);
     border-bottom-color: var(--brand-primary);
     border-radius: 50%;
     animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-    position: relative;
     box-shadow: 0 0 20px var(--brand-secondary), inset 0 0 20px var(--brand-primary);
 }
 .cyber-circle::before {
@@ -79,11 +104,14 @@ body {
 
 .loader-text {
     font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     font-size: 0.9rem;
     color: var(--brand-secondary);
     text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
     animation: blink 1.5s infinite;
+    text-align: center;
+    max-width: 85%;
+    line-height: 1.5;
 }
 
 @keyframes blink {

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             loadingScreen.style.display = 'none';
         }, 800);
-    }, 2500);
+    }, 3500);
 
     // Optional: Add some interactive hover effects to the glass panels
     const panels = document.querySelectorAll('.glass-panel, .glass-header');
