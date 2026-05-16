@@ -3,204 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="AI & Machine Learning Club OCT - National Level Live Event Portal.">
+    <meta name="description" content="AI & Machine Learning Club OCT — Real-time Live Results Portal for national-level events at Oriental College of Technology, Bhopal.">
     <meta name="theme-color" content="#05050A">
-    <meta property="og:title" content="Live Command Center | AI & ML Club OCT">
-    <meta property="og:description" content="Access the real-time Live Update Portal for the AI & Machine Learning Club at Oriental College of Technology.">
+    <meta property="og:title" content="Live Results | AI & ML Club · OCT Bhopal">
+    <meta property="og:description" content="Real-time live update portal for AIML Club events at Oriental College of Technology.">
     <meta property="og:image" content="logo.png">
-    <meta property="og:url" content="https://aimlcluboct.in/">
+    <meta property="og:url" content="https://result.aimlcluboct.in/">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
-    <title>Live Command Center | AIML Club</title>
-    
+    <title>Live Results · AI &amp; ML Club OCT</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-theme">
-    <!-- Premium Loading Screen -->
+
+    <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loader-content">
-            <div class="hologram-ring"></div>
+            <div class="loader-ring"></div>
             <div class="loader-logo-wrapper">
-                <img src="logo.png" alt="AIML Club Logo" class="loader-logo">
-                <div class="cyber-circle"></div>
+                <img src="logo.png" alt="AIML Club" class="loader-logo">
             </div>
-            <div class="loader-text-container">
-                <div class="scanning-bar"></div>
-                <div class="loader-text" id="loader-status">ESTABLISHING SECURE CONNECTION...</div>
-            </div>
-            <div class="loader-progress"><div class="progress-bar"></div></div>
+            <div class="loader-label" id="loader-status">INITIALIZING SYSTEMS...</div>
+            <div class="loader-progress"><div class="progress-fill"></div></div>
         </div>
     </div>
 
-    <!-- Ambient Cinematic Effects -->
+    <!-- Background -->
     <div class="ambient-background">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
         <div class="grid-perspective"></div>
-        <div class="radar-sweep"></div>
         <div class="particles" id="particles-container"></div>
         <div class="noise-overlay"></div>
     </div>
 
     <main class="dashboard-container">
-        <!-- Top Navigation / Header -->
+
+        <!-- ── Header ──────────────────────────────────────────── -->
         <header class="cyber-header glass-panel">
             <div class="header-glow"></div>
+
             <div class="brand">
-                <div class="logos-container">
+                <div class="logos-wrap">
                     <img src="logo.png" alt="AIML Club Logo" class="club-logo">
                     <img src="oct-logo.png" alt="OCT Logo" class="club-logo oct-logo">
                 </div>
                 <div class="brand-text">
-                    <span class="club-name">AI & ML CLUB</span>
-                    <span class="badge" title="Oriental College of Technology, Bhopal">OCT</span>
+                    <span class="club-name">AI &amp; ML CLUB</span>
+                    <span class="badge">ORIENTAL COLLEGE OF TECHNOLOGY</span>
                 </div>
             </div>
-            
+
             <div class="center-title">
                 <div class="scan-beam"></div>
-                <h1 class="title">LIVE UPDATE <span class="highlight">PORTAL</span></h1>
-                <div class="subtitle">NATIONAL EVENT COMMAND CENTER</div>
+                <h1 class="title">LIVE <span class="highlight">RESULTS</span></h1>
+                <p class="subtitle">NATIONAL EVENT COMMAND CENTER · BHOPAL</p>
             </div>
-            
-            <div class="header-stats">
+
+            <div class="header-controls">
                 <div class="stat-pill">
-                    <i class="far fa-clock"></i> <span id="current-time">00:00:00</span>
+                    <i class="far fa-clock"></i>
+                    <span id="current-time">00:00:00</span>
                 </div>
                 <div class="stat-pill live-pill">
-                    <span class="live-dot pulse"></span> <span class="live-text">LIVE</span>
+                    <span class="live-dot pulse"></span>
+                    <span>LIVE</span>
                 </div>
                 <button id="refresh-btn" class="cyber-button" title="Refresh Live Data">
-                    <i class="fas fa-sync-alt spin-icon"></i>
+                    <i class="fas fa-sync-alt"></i>
                     <span>SYNC</span>
                 </button>
             </div>
         </header>
 
-        <!-- Live Ticker -->
+        <!-- ── Ticker ──────────────────────────────────────────── -->
         <div class="ticker-wrapper glass-panel">
-            <div class="ticker-label"><i class="fas fa-broadcast-tower"></i> SYS_MSG</div>
+            <div class="ticker-label">
+                <i class="fas fa-circle-dot"></i> LIVE FEED
+            </div>
             <div class="ticker-content">
                 <div class="ticker-text">
-                    <span>⚡ WELCOME TO THE AIML CLUB NATIONAL LEVEL EVENT ⚡</span>
-                    <span class="sep">•</span>
-                    <span>🔴 LIVE RESULTS ARE BEING SYNCHRONIZED 🔴</span>
-                    <span class="sep">•</span>
-                    <span>🏆 STAY TUNED FOR LEADERBOARD CHANGES 🏆</span>
-                    <span class="sep">•</span>
-                    <span>⚡ WELCOME TO THE AIML CLUB NATIONAL LEVEL EVENT ⚡</span>
+                    <span>WELCOME TO THE AIML CLUB NATIONAL-LEVEL EVENT</span>
+                    <span class="sep">◆</span>
+                    <span>LIVE RESULTS ARE NOW BEING SYNCHRONIZED</span>
+                    <span class="sep">◆</span>
+                    <span>STAY TUNED — LEADERBOARD UPDATES IN REAL TIME</span>
+                    <span class="sep">◆</span>
+                    <span>POWERED BY AI &amp; ML CLUB · ORIENTAL COLLEGE OF TECHNOLOGY, BHOPAL</span>
+                    <span class="sep">◆</span>
                 </div>
             </div>
         </div>
 
-        <!-- Dashboard Grid Layout -->
+        <!-- ── Dashboard Grid ──────────────────────────────────── -->
         <div class="dashboard-grid">
-            
-            <!-- Left Panel: Event Telemetry -->
+
+            <!-- Left Panel: Telemetry -->
             <aside class="telemetry-panel">
                 <div class="glass-panel stats-card">
                     <div class="card-header">
-                        <i class="fas fa-satellite-dish"></i> <h3>TELEMETRY</h3>
+                        <i class="fas fa-satellite-dish"></i>
+                        <h3>EVENT TELEMETRY</h3>
                     </div>
                     <div class="stats-grid">
+
                         <div class="stat-item">
-                            <div class="stat-header">
+                            <div class="stat-meta">
                                 <i class="fas fa-users"></i>
-                                <div class="stat-label">ACTIVE CONNECTIONS</div>
+                                <span class="stat-label">ACTIVE VIEWERS</span>
                             </div>
                             <div class="stat-value text-glow" id="viewers-count">1,204</div>
-                            <canvas id="miniGraph" width="100" height="20"></canvas>
+                            <canvas id="miniGraph" width="200" height="22"></canvas>
                         </div>
-                        <div class="stat-item active-glow">
-                            <div class="stat-header">
+
+                        <div class="stat-item">
+                            <div class="stat-meta">
                                 <i class="fas fa-satellite-dish pulse-icon"></i>
-                                <div class="stat-label">MAINFRAME STATUS</div>
+                                <span class="stat-label">STREAM STATUS</span>
                             </div>
                             <div class="stat-value text-cyan">ONLINE</div>
                             <div class="signal-bars">
-                                <div class="s-bar active"></div><div class="s-bar active"></div><div class="s-bar active"></div><div class="s-bar blink-bar"></div>
+                                <div class="s-bar active"></div>
+                                <div class="s-bar active"></div>
+                                <div class="s-bar active"></div>
+                                <div class="s-bar blink-bar"></div>
                             </div>
                         </div>
+
                         <div class="stat-item">
-                            <div class="stat-header">
+                            <div class="stat-meta">
                                 <i class="fas fa-microchip"></i>
-                                <div class="stat-label">SYSTEM LOAD</div>
+                                <span class="stat-label">SYSTEM LOAD</span>
                             </div>
                             <div class="stat-value text-glow load-text">42%</div>
                             <div class="load-graph">
                                 <div class="load-fill"></div>
                             </div>
                         </div>
+
                         <div class="stat-item">
-                            <div class="stat-header">
-                                <i class="fas fa-history"></i>
-                                <div class="stat-label">LAST DATA SYNC</div>
+                            <div class="stat-meta">
+                                <i class="fas fa-rotate"></i>
+                                <span class="stat-label">LAST SYNC</span>
                             </div>
                             <div class="stat-value text-pink" id="time-since-update">00:00 AGO</div>
                             <div class="sync-pulse"></div>
                         </div>
+
                     </div>
                 </div>
 
                 <div class="glass-panel quick-actions">
                     <div class="card-header">
-                        <i class="fas fa-terminal"></i> <h3>COMMANDS</h3>
+                        <i class="fas fa-terminal"></i>
+                        <h3>QUICK ACTIONS</h3>
                     </div>
                     <div class="action-buttons">
-                        <button class="action-btn" onclick="toggleFullscreen()"><i class="fas fa-expand"></i> Fullscreen</button>
-                        <a href="https://aimlcluboct.in/" target="_blank" class="action-btn"><i class="fas fa-globe"></i> Main Portal</a>
+                        <button class="action-btn" onclick="toggleFullscreen()">
+                            <i class="fas fa-expand"></i> Fullscreen Mode
+                        </button>
+                        <a href="https://aimlcluboct.in/" target="_blank" class="action-btn">
+                            <i class="fas fa-globe"></i> Club Website
+                        </a>
                     </div>
                 </div>
             </aside>
 
-            <!-- Main Panel: Docs Viewer -->
+            <!-- Main Panel: Live Feed -->
             <section class="main-feed-panel glass-panel">
                 <div class="feed-header">
                     <div class="feed-title-wrap">
                         <span class="live-dot blink"></span>
-                        <h2>LIVE EVENT FEED</h2>
+                        <h2>LIVE EVENT RESULTS</h2>
                     </div>
-                    <div class="typewriter">
+                    <div class="feed-status">
                         <span id="feed-status">Receiving encrypted stream from control center...</span>
                     </div>
                 </div>
-                
+
                 <div class="document-container">
-                    <!-- Futuristic Borders & Scanner -->
-                    <div class="scanner-line"></div>
                     <div class="corner corner-tl"></div>
                     <div class="corner corner-tr"></div>
                     <div class="corner corner-bl"></div>
                     <div class="corner corner-br"></div>
-                    
-                    <!-- Cinematic Terminal Preloader for iframe -->
+                    <div class="scanner-line"></div>
+
+                    <!-- Terminal loader shown while iframe loads -->
                     <div class="iframe-skeleton terminal-placeholder" id="iframe-skeleton">
                         <div class="terminal-overlay"></div>
                         <div class="terminal-content">
                             <div class="terminal-header">
-                                <span class="blink">🔴</span> LIVE EVENT STREAM ACTIVE
+                                <span class="blink">●</span>&nbsp; LIVE EVENT STREAM — CONNECTING
                             </div>
-                            <div class="terminal-body" id="terminal-lines">
-                                <div class="t-line">Awaiting incoming transmissions...</div>
-                                <div class="t-line delay-1">Monitoring event control systems...</div>
-                                <div class="t-line delay-2">Telemetry channels stable...</div>
-                                <div class="t-line delay-3">AI synchronization online...</div>
+                            <div class="terminal-body">
+                                <div class="t-line">Establishing secure uplink...</div>
+                                <div class="t-line delay-1">Syncing results with event control...</div>
+                                <div class="t-line delay-2">Telemetry channels nominal...</div>
+                                <div class="t-line delay-3">Live feed ready. Loading document...</div>
                             </div>
-                            <div class="terminal-footer">
-                                <span class="t-cursor">_</span>
-                            </div>
+                            <div class="terminal-footer"><span class="t-cursor">_</span></div>
                             <div class="waveform-container">
-                                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                <div class="bar"></div><div class="bar"></div>
+                                <div class="bar"></div><div class="bar"></div>
+                                <div class="bar"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="iframe-wrapper">
-                        <!-- CSS filter on iframe creates the dark mode aesthetic -->
                         <iframe id="docs-iframe"
                             src="https://docs.google.com/document/d/e/2PACX-1vTNv1JQSN-hUP1yvWyPTW5PPYHCYdRrOb6ZTjXRUQIUXGAiZVQRphPblG6BFBSIQP_YdStj1466aeQs/pub?embedded=true"
                             frameborder="0"
@@ -212,11 +226,12 @@
             </section>
         </div>
 
+        <!-- ── Footer ──────────────────────────────────────────── -->
         <footer class="cyber-footer glass-panel">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span>POWERED BY</span>
-                    <span class="highlight-text">AIML CLUB OCT</span>
+                    <span class="footer-by">POWERED BY</span>
+                    <span class="footer-name">AI &amp; ML CLUB · OCT BHOPAL</span>
                 </div>
                 <div class="social-links">
                     <a href="https://aimlcluboct.in/" target="_blank" title="Website" class="social-icon"><i class="fas fa-globe"></i></a>
@@ -225,16 +240,14 @@
                     <a href="https://www.instagram.com/aimlcluboct" target="_blank" title="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.commudle.com/communities/ai-ml-club" target="_blank" title="Commudle" class="social-icon"><i class="fas fa-users"></i></a>
                     <a href="https://whatsapp.com/channel/0029VbAthv38V0tfulumuV1D" target="_blank" title="WhatsApp Channel" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://chat.whatsapp.com/ITBTDOgerQVLnw9dq7jxN6" target="_blank" title="WhatsApp Group" class="social-icon"><i class="fas fa-comments"></i></a>
                 </div>
             </div>
             <div class="footer-line"></div>
         </footer>
+
     </main>
 
-    <!-- Overlay flash effect for updates -->
     <div id="update-flash" class="update-flash"></div>
-
     <script src="script.js"></script>
 </body>
 </html>
