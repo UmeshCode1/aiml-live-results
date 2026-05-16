@@ -368,6 +368,13 @@ body {
     align-items: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     font-family: 'Space Grotesk', sans-serif;
+    animation: float-bar 7s infinite ease-in-out;
+    animation-delay: 1s;
+}
+
+@keyframes float-bar {
+    0%, 100% { transform: translateY(0); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    50% { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
 }
 
 .status-left {
@@ -407,6 +414,12 @@ body {
     font-size: 0.9rem;
     letter-spacing: 1px;
     text-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+}
+
+.experience-tag i {
+    color: #FFD700;
+    margin-right: 5px;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
 }
 
 .status-right {
