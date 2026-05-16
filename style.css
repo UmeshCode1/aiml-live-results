@@ -158,13 +158,12 @@ body {
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
   will-change: transform;
   animation: blob-drift 25s infinite alternate ease-in-out;
 }
-.blob-1 { width: 45vw; height: 45vw; background: var(--brand); opacity: 0.18; top: -15%; left: -10%; animation-delay: 0s; }
-.blob-2 { width: 38vw; height: 38vw; background: var(--cyan);  opacity: 0.12; bottom: -15%; right: -10%; animation-delay: -8s; }
-.blob-3 { width: 28vw; height: 28vw; background: var(--accent); opacity: 0.08; top: 45%; left: 42%; animation-delay: -15s; }
+.blob-1 { width: 45vw; height: 45vw; background: radial-gradient(circle, var(--brand) 0%, transparent 70%); opacity: 0.18; top: -15%; left: -10%; animation-delay: 0s; }
+.blob-2 { width: 38vw; height: 38vw; background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);  opacity: 0.12; bottom: -15%; right: -10%; animation-delay: -8s; }
+.blob-3 { width: 28vw; height: 28vw; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: 0.08; top: 45%; left: 42%; animation-delay: -15s; }
 
 @keyframes blob-drift {
   0%   { transform: translate(0, 0) scale(1); }
@@ -393,9 +392,6 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-panel), 0 0 15px var(--cyan-glow), 0 0 0 1px var(--border);
-  animation: float-el 10s ease-in-out infinite;
-  animation-delay: 0.5s;
-  will-change: transform;
   min-height: 0;
 }
 
