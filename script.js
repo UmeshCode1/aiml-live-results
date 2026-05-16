@@ -97,6 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── 5.5 AUTO UPDATE ── */
+  if (docsIframe) {
+    setInterval(() => {
+      const url = new URL(docsIframe.src);
+      url.searchParams.set('t', Date.now());
+      docsIframe.src = url.href;
+      // Note: We don't show the skeleton here for a seamless update
+    }, 30000); // Polling every 30 seconds
+  }
+
 
   /* ── 6. MOUSE SPOTLIGHT ── */
   const glassEls = document.querySelectorAll('.glass-header, .glass-panel, .glass-footer');
