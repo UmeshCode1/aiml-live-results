@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3500);
 
     // Optional: Add some interactive hover effects to the glass panels
-    const panels = document.querySelectorAll('.glass-panel, .glass-header');
+    const panels = document.querySelectorAll('.glass-panel, .glass-header, .glass-footer');
     
     panels.forEach(panel => {
         panel.addEventListener('mousemove', (e) => {
